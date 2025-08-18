@@ -170,7 +170,8 @@ type CapabilityVersion int
 //   - 123: 2025-07-28: fix deadlock regression from cryptokey routing change (issue #16651)
 //   - 124: 2025-08-08: removed NodeAttrDisableMagicSockCryptoRouting support, crypto routing is now mandatory
 //   - 125: 2025-08-11: dnstype.Resolver adds UseWithExitNode field.
-const CurrentCapabilityVersion CapabilityVersion = 125
+//   - 126: 2025-08-17: Client understands CapabilityExperimentalUI, which gates experimental UI features.
+const CurrentCapabilityVersion CapabilityVersion = 126
 
 // ID is an integer ID for a user, node, or login allocated by the
 // control plane.
@@ -2404,6 +2405,9 @@ const (
 	CapabilityDataPlaneAuditLogs NodeCapability = "https://tailscale.com/cap/data-plane-audit-logs" // feature enabled
 	CapabilityDebug              NodeCapability = "https://tailscale.com/cap/debug"                 // exposes debug endpoints over the PeerAPI
 	CapabilityHTTPS              NodeCapability = "https"
+
+	// CapabilityMacUIV2 grants a peer the ability to use the updated macOS UI.
+	CapabilityMacUIV2 NodeCapability = "https://tailscale.com/cap/mac-ui-v2" // macOS UI v2
 
 	// CapabilityBindToInterfaceByRoute changes how Darwin nodes create
 	// sockets (in the net/netns package). See that package for more
